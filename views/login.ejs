@@ -1,51 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login - Halloween</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Creepster', cursive;
-    }
-    .ghost-shadow {
-      text-shadow: 0 0 5px #71342e, 0 0 10px #7f1a11, 0 0 20px #83403a;
-    }
+<meta charset="UTF-8"> <title>Login - Halloween</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+<style> 
+ body {
+   font-family: 'Creepster', cursive;
+    background-image: url('/halloween.jpg'); /* spooky background */
+    background-size: cover;
+    background-attachment: fixed;
+ }
+
+ .ghost-shadow {
+text-shadow: 0 0 5px #ff6f61, 0 0 10px #ff4500, 0 0 20px #ff0000, 0 0 30px #8b0000;
+}
+
+ .floating {
+ position: absolute;
+ animation: float 6s ease-in-out infinite;
+ }
+
+ @keyframes float {
+ 0%, 100% { transform: translateY(0) rotate(0deg); }
+ 50% { transform: translateY(-15px) rotate(10deg); }
+ }
+
+ input::placeholder {
+ color: #ff8c00;
+ opacity: 0.7;
+ }
+
+.eerie-glow {
+ text-shadow: 0 0 5px #090100, 0 0 10px #dc766c, 0 0 20px #d82010;
+
+ }
+
+ .bg-glass {
+ backdrop-filter: blur(10px);
+ background-color: rgba(0,0,0,0.6);
+ }
   </style>
 </head>
-<body class="bg-gradient-to-br from-black via-gray-800 to-purple-900 min-h-screen flex items-center justify-center">
-  <div class="bg-black/70 backdrop-blur-md p-10 rounded-3xl shadow-2xl border-2 border-orange-600 w-full max-w-md">
-    <h2 class="text-4xl font-bold text-orange-500 mb-6 text-center ghost-shadow">Login</h2>
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden">
 
-    <% if (typeof error !== 'undefined') { %>
-      <div class="bg-red-900 text-orange-400 px-4 py-2 rounded mb-4 text-center border border-red-600">
-        <%= error %>
-      </div>
-    <% } %>
+  <!-- Floating bats -->
+ <img src="/bat.png" class="floating top-10 left-20 w-12 opacity-80">
+ <img src="/bat.png" class="floating top-32 right-16 w-16 opacity-80">
+ <img src="/bat.png" class="floating top-1/2 left-1/3 w-10 opacity-100">
 
-    <form action="/login" method="POST" class="space-y-5">
-      <div>
-        <label for="email" class="block text-orange-400 font-medium mb-2">Email address</label>
-        <input type="email" id="email" name="email" required
-          class="w-full px-4 py-2 border border-orange-600 bg-black/50 text-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-orange-500">
-      </div>
+<div class="bg-glass p-10 rounded-3xl shadow-2xl border-2 border-orange-600 w-full max-w-md relative z-10">
+   <h2 class="text-5xl font-bold text-orange-500 mb-6 text-center ghost-shadow animate-pulse">Login</h2>
 
-      <div>
-        <label for="password" class="block text-orange-400 font-medium mb-2">Password</label>
-        <input type="password" id="password" name="password" required
-          class="w-full px-4 py-2 border border-orange-600 bg-black/50 text-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-orange-500">
-      </div>
+  <% if (typeof error !== 'undefined') { %>
+<div class="bg-red-900 text-orange-400 px-4 py-2 rounded mb-4 text-center border border-red-600 animate-pulse">
+ <%= error %>
+</div>
+ <% } %>
 
-      <button type="submit"
-        class="w-full bg-orange-600 hover:bg-orange-700 text-black font-bold py-2 rounded-lg transition duration-300 shadow-lg">
-        Login
-      </button>
-    </form>
+<form action="/login" method="POST" class="space-y-5">
+<div>
+   <label for="email" class="block text-orange-400 font-medium mb-2">Email address</label>
+ <input type="email" id="email" name="email" required
+ class="w-full px-4 py-2 border border-orange-600 bg-black/50 text-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-orange-500 eerie-glow">
+</div>
 
-    <p class="mt-4 text-center text-orange-300">
-      Don’t have an account? <a href="/signup" class="text-purple-400 hover:underline">Signup here</a>
-    </p>
-  </div>
+ <div>
+ <label for="password" class="block text-orange-400 font-medium mb-2">Password</label>
+ <input type="password" id="password" name="password" required
+  class="w-full px-4 py-2 border border-orange-600 bg-black/50 text-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-orange-500 eerie-glow">
+</div>
+
+<button type="submit"
+ class="w-full bg-orange-600 hover:bg-orange-700 text-black font-bold py-2 rounded-lg transition duration-300 shadow-lg animate-pulse">
+Login
+ </button>
+</form>
+
+<p class="mt-4 text-center text-orange-300">
+Don’t have an account? <a href="/signup" class="text-purple-400 hover:underline">Signup here</a>
+</p>
+</div>
+
 </body>
 </html>
